@@ -1,3 +1,7 @@
+package TrafficSignal;
+
+import TrafficSignal.States.RedState;
+
 public class TrafficLightContext {
     private TrafficLightState currentState;
     public TrafficLightContext(){
