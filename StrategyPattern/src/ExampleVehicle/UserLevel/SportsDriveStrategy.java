@@ -1,4 +1,4 @@
-package UserLevel;
+package ExampleVehicle.UserLevel;
 
 public class SportsDriveStrategy implements DriveStrategy {
     @Override

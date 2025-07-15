@@ -1,4 +1,6 @@
-import UserLevel.DriveStrategy;
+package ExampleVehicle;
+
+import ExampleVehicle.UserLevel.DriveStrategy;
 
 public class Vehicle {
     DriveStrategy driveStrategy;
