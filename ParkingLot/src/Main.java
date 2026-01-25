@@ -8,7 +8,7 @@ import models.Ticket;
 import models.Vehicle;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         FareStrategy hourlyFareStrategy = new HourlyFareStrategy();
         FareStrategy standardFareStrategy = new HourlyFareStrategy(); // Replace with actual StandardFareStrategy when implemented

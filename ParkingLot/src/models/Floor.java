@@ -24,7 +24,7 @@ public class Floor {
     // addFourWheelerSlots
     // addHeavyVehicleSlots
 
-    public Slot findAvailableSlotOnFloor(Vehicle vehicle) throws Exception{
+    public Slot findAvailableSlotOnFloor(Vehicle vehicle)  {
         for(Slot slot: slots){
             if(slot.getStatus() == SlotStatus.EMPTY && slot.getSlotType() == (vehicle instanceof FourWheeler ? SlotType.FOUR_WHEELER : SlotType.HEAVY_VEHICLE)){
                 System.out.println("Available slot found: " + slot.getSlotNumber());

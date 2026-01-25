@@ -21,7 +21,7 @@ public class ParkingLot {
         }
         return instance;
     }
-    public Slot findAvailableSlot(Vehicle vehicle) throws Exception{
+    public Slot findAvailableSlot(Vehicle vehicle){
         for(Floor floor: floors){
             System.out.println("Searching on floor" + floor);
             Slot slot = floor.findAvailableSlotOnFloor(vehicle);
@@ -29,6 +29,6 @@ public class ParkingLot {
                 return slot;
             }
         }
-        throw  new Exception("No Slot Available on floor");
+        return null;
     };
 }
