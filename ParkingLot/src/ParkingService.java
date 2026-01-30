@@ -6,24 +6,30 @@ import models.Ticket;
 import models.Vehicle;
 
 import java.time.LocalDateTime;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ParkingService {
 
     private final ParkingLot parkingLot;
+    private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
     public ParkingService(){
         this.parkingLot = ParkingLot.getInstance();
     }
 
     public Ticket createTicket(Vehicle vehicle)  {
-        try {
+        readWriteLock.writeLock().lock();
+        try{
             Slot slot = parkingLot.findAvailableSlot(vehicle);
-            slot.changeStatus(SlotStatus.FILLED);
-            return new Ticket(slot, vehicle);
-        } catch (Exception e){
-            System.out.println("No slots available");
-            return null;
+            if(slot!=null){
+                slot.changeStatus(SlotStatus.FILLED);
+                return new Ticket(slot, vehicle);
+            }
+        } finally {
+            readWriteLock.writeLock().unlock();
         }
+        throw new RuntimeException("No slots available");
     };
 
     public void releaseParkingSlot(Ticket ticket, PaymentStrategy paymentStrategy){
